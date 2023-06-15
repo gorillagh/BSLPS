@@ -102,7 +102,7 @@ function Navbar() {
               text="Apply Now!"
               fullWidth={false}
               backgroundColor="secondary.main"
-              size="small"
+              // size="small"
             />
           </Box>
           <Box
