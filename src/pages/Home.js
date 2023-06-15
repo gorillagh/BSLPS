@@ -31,7 +31,7 @@ const Home = () => {
           alignItems: "center",
           height: { xs: "50vh", md: "40vh" },
           position: "relative",
-          backgroundColor: "#f8f8ff", // Adjust the opacity (0.5) to make it darker
+          backgroundColor: "#000", // Adjust the opacity (0.5) to make it darker
           color: "#fff",
           mb: 4,
           backgroundSize: "cover",
