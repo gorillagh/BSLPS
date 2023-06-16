@@ -25,11 +25,12 @@ const AboutUs = () => {
         >
           <Grid item xs={12} md={6}>
             <Box sx={{ width: { md: "70%" } }}>
-              <Box display="flex" flexDirection="column" rowGap={2}>
+              <Box display="flex" flexDirection="column" rowGap={1}>
                 <Typography
                   sx={{
                     fontWeight: 500,
                     fontFamily: "'Ubuntu', sans-serif",
+                    display: { xs: "none", md: "block" },
                   }}
                   variant="h5"
                 >
@@ -74,6 +75,18 @@ const AboutUs = () => {
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
+            <Box display={{ xs: "block", md: "none" }} mb={2}>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontFamily: "'Ubuntu', sans-serif",
+                }}
+                variant="h5"
+              >
+                Discover our mission to provide quality education in languages
+                and professional skills.
+              </Typography>
+            </Box>
             <Box
               width="100%"
               sx={{
@@ -86,7 +99,7 @@ const AboutUs = () => {
                 position: "relative",
                 backgroundColor: "transparent", // Adjust the opacity (0.5) to make it darker
                 color: "#fff",
-                mb: 4,
+                mb: 0,
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",

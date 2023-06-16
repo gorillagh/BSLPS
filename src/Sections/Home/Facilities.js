@@ -9,12 +9,24 @@ const Facilities = () => {
         <Grid
           container
           spacing={2}
-          py={5}
+          // py={5}
           alignItems="center"
 
           // sx={{ flexDirection: { xs: "column-reverse", md: "row" } }}
         >
           <Grid item xs={12} md={6}>
+            <Typography
+              sx={{
+                fontWeight: 500,
+                fontFamily: "'Ubuntu', sans-serif",
+                display: { xs: "block", md: "none" },
+                mb: 2,
+              }}
+              variant="h5"
+            >
+              Experience our modern facilities and access a wealth of learning
+              resources..
+            </Typography>
             <Box width="100%">
               <img
                 src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
@@ -32,6 +44,7 @@ const Facilities = () => {
                   sx={{
                     fontWeight: 500,
                     fontFamily: "'Ubuntu', sans-serif",
+                    display: { xs: "none", md: "block" },
                   }}
                   variant="h5"
                 >
