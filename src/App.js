@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import Footer from "./components/Footers/Footer";
 import { Box, Container, Grid, Icon, Typography } from "@mui/material";
 import TopInfo from "./Views/TopInfo";
+import ShowNavbar from "./components/Navbars/ShowNavbar";
 
 let theme = createTheme({
   palette: {
@@ -88,6 +89,7 @@ const App = () => {
       <Helmet>
         <title>BSLPS - Best School of Languages and Professional Studies</title>
       </Helmet>
+      <ShowNavbar />
       <TopInfo />
       <Navbar />
       <Routes>
