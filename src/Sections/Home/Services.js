@@ -52,7 +52,7 @@ const Services = () => {
           variant="h4"
           textAlign="center"
         >
-          What we Offer
+          What We Offer
         </Typography>
         <Grid
           py={2}

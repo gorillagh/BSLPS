@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,24 +13,39 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Icon } from "@mui/material";
+import {
+  Divider,
+  Drawer,
+  Icon,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import ActionButton from "../Buttons/ActionButton";
+import Link from "../Links/Link";
+import Twitter from "@mui/icons-material/Twitter";
+import Facebook from "@mui/icons-material/Facebook";
+import Instagram from "@mui/icons-material/Instagram";
+import WhatsApp from "@mui/icons-material/WhatsApp";
 
 const pages = [
-  "Languages",
-  "Skills",
-  "Admission",
-  "Faculty & Staff",
-  "Resources",
-  "About Us",
-  "News & Events",
-  "Contact Us",
+  { text: "Languages", icon: "translate", to: "/languages" },
+  { text: "Skills", icon: "engineering", to: "/skills" },
+  { text: "Admission", icon: "school", to: "/admission" },
+  { text: "Faculty & Staff", icon: "", to: "/faculty" },
+  { text: "Resources", icon: "", to: "/resources" },
+  { text: "About Us", icon: "info", to: "/about" },
+  { text: "News & Events", icon: "event", to: "news-events" },
+  { text: "Contact Us", icon: "call", to: "contact" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -46,6 +61,169 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  ////////////drawer///////////////////
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const openSocialMedia = (platform) => {
+    let url,
+      webUrl = "";
+    switch (platform) {
+      case "facebook":
+        url = "";
+        webUrl = "";
+        break;
+      case "instagram":
+        url = "";
+        webUrl = "";
+        break;
+      case "twitter":
+        url = "";
+        webUrl = "";
+        break;
+      case "snapchat":
+        url = "";
+        webUrl = "";
+        break;
+      case "whatsapp":
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+          const isWhatsAppInstalled = /WhatsApp/i.test(navigator.userAgent);
+          if (isWhatsAppInstalled) {
+            url = `whatsapp://send?text=Hello%20Wuda%20Lounge!&phone=+233240298910`;
+          } else {
+            const platform = /(android)/i.test(navigator.userAgent)
+              ? "android"
+              : "ios";
+            url = `https://wa.me/?text=Hello%20BSLPS%20!&phone=+233240298910&app_absent=1${
+              platform === "android" ? "&fallback_url=" : ""
+            }${
+              platform === "android"
+                ? "market://details?id=com.whatsapp"
+                : "https://apps.apple.com/app/id310633997"
+            }`;
+          }
+        } else {
+          url = `https://web.whatsapp.com/send?phone=+233240298910`;
+        }
+        break;
+      default:
+        return;
+    }
+
+    // Open the URL in the app or web app, depending on the device and app availability
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      const appUrl = url;
+      // const webUrl = webUrl;
+      const appWindow = window.open(appUrl, "_blank");
+      setTimeout(() => {
+        if (!appWindow || appWindow.closed || appWindow.closed === undefined) {
+          window.location.href = webUrl;
+        }
+      }, 500);
+    } else {
+      window.open(webUrl, "_blank");
+    }
+  };
+
+  const drawer = (
+    <Box
+      sx={{
+        textAlign: "left",
+        pt: "4px",
+      }}
+      onClick={handleDrawerToggle}
+    >
+      <Box my={1} px={2}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          {/* <Typography component="a" href="/" sx={{ mr: 1 }}>
+            <img
+                src={}
+                alt="logo"
+                width={}
+                height={}
+                style={{
+                  
+                }}
+              />
+          </Typography> */}
+          <Box display="flex" flexDirection="column">
+            <Typography
+              variant="h4"
+              // noWrap
+              sx={{
+                // fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".1rem",
+                textDecoration: "none",
+              }}
+            >
+              <Link text="BSLPS" to="/" color="#000" />
+            </Typography>
+            {/* <Typography variant="body2">
+              Best School of Languages and Professional Studies
+            </Typography> */}
+          </Box>
+        </Box>
+      </Box>
+
+      <List sx={{ height: "100%" }}>
+        <Box sx={{ display: { xs: "block", md: "none" } }}>
+          <Divider sx={{ my: 2 }} />
+          {pages.map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton
+                // onClick={() => item.to()}
+                key={index}
+                sx={{ textAlign: "left" }}
+              >
+                <ListItemIcon>
+                  <Icon sx={{ color: "primary.main" }}>{item.icon}</Icon>
+                </ListItemIcon>
+                <ListItemText key={index} primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </Box>
+      </List>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box position="absolute" sx={{ top: "auto", bottom: 0 }}>
+          <IconButton
+            onClick={() => openSocialMedia("facebook")}
+            size="large"
+            color="#3b5998"
+          >
+            <Facebook sx={{ color: "#3b5998" }} />
+          </IconButton>
+          <IconButton
+            size="large"
+            color="#3b5998"
+            onClick={() => openSocialMedia("instagram")}
+          >
+            <Instagram sx={{ color: "#c13584" }} />
+          </IconButton>
+
+          <IconButton
+            size="large"
+            color="#1da1f2"
+            onClick={() => openSocialMedia("twitter")}
+          >
+            <Twitter sx={{ color: "#1da1f2" }} />
+          </IconButton>
+
+          <IconButton
+            size="large"
+            color="#25D366"
+            onClick={() => openSocialMedia("whatsapp")}
+          >
+            <WhatsApp sx={{ color: "#25D366" }} />
+          </IconButton>
+        </Box>
+      </Box>
+    </Box>
+  );
 
   return (
     <AppBar position="static" color="transparent">
@@ -123,45 +301,62 @@ function Navbar() {
           </Box>
           <Box
             sx={{
-              flexGrow: 1,
+              // flexGrow: 1,
               display: { xs: "flex", md: "none" },
-              justifyContent: "flex-end",
+              justifyContent: "right",
+              ml: 1,
             }}
           >
             <IconButton
-              size="large"
+              size="small"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
+              onClick={handleDrawerToggle}
+              color="primary"
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+            <Box
+            // component="nav"
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+              <Drawer
+                anchor="left"
+                variant="temporary"
+                open={drawerOpen}
+                onClose={handleDrawerToggle}
+                slots={{
+                  backdrop: () => (
+                    <Box
+                      sx={{
+                        background: "rgba(255, 255, 255, 0.05)",
+                        backdropFilter: "blur(5.8px)",
+                        WebkitBackdropFilter: "blur(5.8px)",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      onClick={handleDrawerToggle}
+                    />
+                  ),
+                }}
+                ModalProps={{
+                  keepMounted: true, // Better open performance on mobile.
+                }}
+                sx={{
+                  // display: { xs: "block", md: "none" },
+                  "& .MuiDrawer-paper": {
+                    background: "rgba(255, 255, 255, 0.9)",
+                    backdropFilter: "blur(8.8px)",
+                    WebkitBackdropFilter: "blur(8.8px)",
+
+                    boxSizing: "border-box",
+                    width: 240,
+                  },
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Box>
           </Box>
         </Toolbar>
         <Toolbar
@@ -178,16 +373,16 @@ function Navbar() {
             <IconButton color="primary">
               <Icon>home</Icon>
             </IconButton>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Box display="flex" alignItems="center">
                 <Button
-                  key={page}
+                  key={index}
                   onClick={handleCloseNavMenu}
                   sx={{ display: "block" }}
                 >
                   <Box display="flex" alignItems="center">
                     <Typography variant="body2" fontWeight={500}>
-                      {page}
+                      {page.text}
                     </Typography>
 
                     <Icon fontSize="small" color="primary">

@@ -22,13 +22,7 @@ const TopInfo = () => {
               columnGap: 1,
             }}
           >
-            <Grid
-              container
-              spacing={1}
-              color="#fff"
-              alignItems="center"
-              py={0.5}
-            >
+            <Grid container spacing={1} color="#fff" alignItems="center" py={1}>
               <Grid item xs={4}>
                 <Box
                   display="flex"

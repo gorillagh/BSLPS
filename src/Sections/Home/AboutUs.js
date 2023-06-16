@@ -96,6 +96,7 @@ const AboutUs = () => {
                 alignItems: "center",
                 height: { xs: 200, md: 300 },
                 width: { xs: 300, md: "100%" },
+                mx: "auto",
                 position: "relative",
                 backgroundColor: "transparent", // Adjust the opacity (0.5) to make it darker
                 color: "#fff",
@@ -118,21 +119,11 @@ const AboutUs = () => {
             >
               <Box sx={{ position: "relative", zIndex: 1, width: "100%" }}>
                 <Box display="flex" alignItems="center" justifyContent="center">
-                  {/* <Icon fontSize="large" sx={{ color: "red" }}>
-                  youtube
-                </Icon> */}
                   <IconButton sx={{ color: "#fff" }} size="large">
                     <YouTubeIcon sx={{ fontSize: "4rem" }} />
                   </IconButton>
                 </Box>
               </Box>
-              {/* <img
-                src="https://images.unsplash.com/photo-1573164713619-24c711fe7878?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80"
-                // height={300}
-                width="100%"
-                alt="about"
-                style={{ borderRadius: "10px" }}
-              /> */}
             </Box>
           </Grid>
         </Grid>
