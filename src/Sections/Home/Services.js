@@ -43,6 +43,17 @@ const Services = () => {
   return (
     <div>
       <Box>
+        <Typography
+          sx={{
+            fontWeight: 500,
+            fontFamily: "'Ubuntu', sans-serif",
+            my: { xs: 0, md: 2 },
+          }}
+          variant="h4"
+          textAlign="center"
+        >
+          What we Offer
+        </Typography>
         <Grid
           py={2}
           container

@@ -86,7 +86,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Helmet>
-        <title>BSLPS</title>
+        <title>BSLPS - Best School of Languages and Professional Studies</title>
       </Helmet>
       <TopInfo />
       <Navbar />
