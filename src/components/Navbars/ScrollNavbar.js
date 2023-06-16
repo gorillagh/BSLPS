@@ -40,9 +40,8 @@ const pages = [
   { text: "News & Events", icon: "event", to: "news-events" },
   { text: "Contact Us", icon: "call", to: "contact" },
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function Navbar() {
+function ScrollNavbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -238,26 +237,6 @@ function Navbar() {
     <AppBar position="static" color="transparent" elevation={0}>
       <Container>
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          <Typography
-            variant="h4"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "Ubuntu",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            BSLPS
-          </Typography>
-
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
           <Typography
             variant="h4"
             noWrap
@@ -265,7 +244,7 @@ function Navbar() {
             href=""
             sx={{
               mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: "flex",
               flexGrow: 1,
               fontFamily: "Ubuntu",
               fontWeight: 700,
@@ -279,8 +258,8 @@ function Navbar() {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "flex", md: "none" },
-              justifyContent: "center",
+              display: "flex",
+              justifyContent: "left",
               width: "40%",
               mr: "auto",
             }}
@@ -290,24 +269,10 @@ function Navbar() {
               fullWidth={false}
               backgroundColor="secondary.main"
               // size="small"
+              my={1}
             />
           </Box>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              justifyContent: "flex-end",
-              width: "40%",
-              mr: "auto",
-            }}
-          >
-            <ActionButton
-              text="Apply Now!"
-              fullWidth={false}
-              backgroundColor="secondary.main"
-              my={0}
-            />
-          </Box>
+
           <Box
             sx={{
               // flexGrow: 1,
@@ -368,43 +333,8 @@ function Navbar() {
             </Box>
           </Box>
         </Toolbar>
-        <Toolbar
-          disableGutters
-          sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}
-        >
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <IconButton color="primary">
-              <Icon>home</Icon>
-            </IconButton>
-            {pages.map((page, index) => (
-              <Box display="flex" alignItems="center">
-                <Button
-                  key={index}
-                  onClick={handleCloseNavMenu}
-                  sx={{ display: "block" }}
-                >
-                  <Box display="flex" alignItems="center">
-                    <Typography variant="body2" fontWeight={500}>
-                      {page.text}
-                    </Typography>
-
-                    <Icon fontSize="small" color="primary">
-                      keyboard_arrow_down
-                    </Icon>
-                  </Box>
-                </Button>
-              </Box>
-            ))}
-          </Box>
-        </Toolbar>
       </Container>
     </AppBar>
   );
 }
-export default Navbar;
+export default ScrollNavbar;
