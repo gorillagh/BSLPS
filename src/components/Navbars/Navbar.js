@@ -173,16 +173,25 @@ function Navbar() {
         <Box sx={{ display: { xs: "block", md: "none" } }}>
           <Divider sx={{ my: 2 }} />
           {pages.map((item, index) => (
-            <ListItem key={index} disablePadding>
+            <ListItem key={index} disablePadding sx={{ my: 1 }}>
               <ListItemButton
                 // onClick={() => item.to()}
                 key={index}
                 sx={{ textAlign: "left" }}
               >
                 <ListItemIcon>
-                  <Icon sx={{ color: "primary.main" }}>{item.icon}</Icon>
+                  <Icon fontSize="small" sx={{ color: "primary.light" }}>
+                    {item.icon}
+                  </Icon>
                 </ListItemIcon>
-                <ListItemText key={index} primary={item.text} />
+                <ListItemText
+                  key={index}
+                  primary={
+                    <Typography fontWeight={500} variant="body2">
+                      {item.text}
+                    </Typography>
+                  }
+                />
               </ListItemButton>
             </ListItem>
           ))}
