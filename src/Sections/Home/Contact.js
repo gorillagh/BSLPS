@@ -1,18 +1,67 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
-  Avatar,
   Box,
-  Container,
   Grid,
   Icon,
   IconButton,
-  Link,
   TextField,
   Typography,
 } from "@mui/material";
 import ActionButton from "../../components/Buttons/ActionButton";
-import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+
+var render = function (status) {
+  if (status === Status.LOADING)
+    return (
+      <Box display="flex" justifyContent="center">
+        <Typography>{/* <CircularProgress thickness={4} /> */}</Typography>
+      </Box>
+    );
+  if (status === Status.FAILURE)
+    return (
+      <Box display="flex" justifyContent="center">
+        <Typography>Unable to load map...</Typography>
+      </Box>
+    );
+
+  return null;
+};
+
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+
+  function MyMapComponent() {
+    const ref = useRef();
+
+    useEffect(() => {
+      const map = new window.google.maps.Map(ref.current, {
+        center: {
+          lat: 5.569349778487747,
+          lng: -0.28730676173235387,
+        },
+        zoom: 17,
+        // disableDefaultUI: true,
+        clickableIcons: false,
+      });
+      const marker = new window.google.maps.Marker({
+        position: map.getCenter(),
+        map,
+      });
+    });
+
+    return (
+      <Box
+        ref={ref}
+        id="map"
+        style={{
+          width: "100%",
+          height: "300px",
+          borderRadius: "12px",
+        }}
+      />
+    );
+  }
+
   return (
     <div>
       <Box>
@@ -24,7 +73,7 @@ const Contact = () => {
           sx={{ flexDirection: { xs: "column-reverse", md: "row" } }}
         >
           <Grid item xs={12} md={6}>
-            <Box>
+            <Box width={{ md: "70%" }}>
               <Box display="flex" flexDirection="column" rowGap={1}>
                 <Typography
                   sx={{
@@ -94,14 +143,21 @@ const Contact = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Box display="flex" columnGap={2} justifyContent="">
-              <Box display="flex" columnGap={1}>
+          <Grid item xs={12} md={6} mb={4}>
+            <Box display="flex" columnGap={2} rowGap={1} flexDirection="column">
+              <Box display="flex" columnGap={1} alignItems="center">
                 <Icon fontSize="small">location_on</Icon>
-                <Typography variant="body2" fontWeight={500}>
+                <Typography variant="body2" fontWeight="bold">
                   Mallam, Accra
                 </Typography>
               </Box>
+              <Wrapper
+                render={render}
+                apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+              >
+                <MyMapComponent />
+                {/* <LoadingBackdrop open={loading} /> */}
+              </Wrapper>
             </Box>
           </Grid>
         </Grid>

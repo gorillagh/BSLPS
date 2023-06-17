@@ -36,9 +36,10 @@ const pages = [
   { text: "Admission", icon: "school", to: "/admission" },
   { text: "Faculty & Staff", icon: "", to: "/faculty" },
   { text: "Resources", icon: "", to: "/resources" },
-  { text: "About Us", icon: "info", to: "/about" },
   { text: "News & Events", icon: "event", to: "news-events" },
-  { text: "Contact Us", icon: "call", to: "contact" },
+  { text: "About Us", icon: "info", to: "/about" },
+
+  // { text: "Contact Us", icon: "call", to: "contact" },
 ];
 
 function ScrollNavbar() {
@@ -267,7 +268,6 @@ function ScrollNavbar() {
             <ActionButton
               text="Apply Now!"
               fullWidth={false}
-              backgroundColor="secondary.main"
               // size="small"
               my={1}
             />
