@@ -16,6 +16,7 @@ import AboutUs from "../Sections/Home/AboutUs";
 import Services from "../Sections/Home/Services";
 import Facilities from "../Sections/Home/Facilities";
 import CallToAction from "../Sections/Home/CallToAction";
+import Contact from "../Sections/Home/Contact";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -72,6 +73,11 @@ const Home = () => {
       <Box id="call-to-action-section" bgcolor="#f8f8ff" py={5}>
         <Container>
           <CallToAction />
+        </Container>
+      </Box>
+      <Box id="contact-section" py={5}>
+        <Container>
+          <Contact />
         </Container>
       </Box>
     </div>
