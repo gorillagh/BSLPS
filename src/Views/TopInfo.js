@@ -1,7 +1,13 @@
 import { Box, Container, Grid, Icon, Typography } from "@mui/material";
 import React from "react";
 
-const infoBox = {};
+const infoBox = {
+  display: "flex",
+  justifyContent: { xs: "center", md: "right" },
+  alignItems: "center",
+  columnGap: 0.5,
+  cursor: "pointer",
+};
 
 const TopInfo = () => {
   return (
@@ -24,12 +30,7 @@ const TopInfo = () => {
           >
             <Grid container spacing={1} color="#fff" alignItems="center" py={1}>
               <Grid item xs={4}>
-                <Box
-                  display="flex"
-                  justifyContent={{ xs: "center", md: "right" }}
-                  alignItems="center"
-                  columnGap={0.5}
-                >
+                <Box sx={infoBox}>
                   <Icon sx={{ fontSize: "1rem" }}>location_on</Icon>
                   <Typography
                     sx={{
@@ -43,10 +44,8 @@ const TopInfo = () => {
               </Grid>
               <Grid item xs={4}>
                 <Box
-                  display="flex"
-                  justifyContent={{ xs: "center", md: "right" }}
-                  alignItems="center"
-                  columnGap={0.5}
+                  sx={infoBox}
+                  onClick={() => (document.location.href = `tel:+233302214723`)}
                 >
                   <Icon sx={{ fontSize: "1rem" }}>phone</Icon>
                   <Typography
@@ -60,12 +59,7 @@ const TopInfo = () => {
                 </Box>
               </Grid>
               <Grid item xs={4}>
-                <Box
-                  display="flex"
-                  justifyContent={{ xs: "center", md: "right" }}
-                  alignItems="center"
-                  columnGap={0.5}
-                >
+                <Box sx={infoBox}>
                   <Icon sx={{ fontSize: "1rem" }}>mail_outlined</Icon>
                   <Typography
                     sx={{
