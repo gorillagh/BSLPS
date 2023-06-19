@@ -7,7 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 const testimonials = [
   {
-    comment: "Great school! I really love their tuition strategies",
+    comment:
+      "entered BSLPS to study French, I didn't just learn French, I now a makeup artist. Thanks to BSLPS.",
     name: "Dorcas",
     bio: "Makeup Artist",
     src: "https://images.unsplash.com/photo-1533146692536-e70f31e14b36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
@@ -19,7 +20,7 @@ const testimonials = [
     src: "https://images.unsplash.com/photo-1542727313-4f3e99aa2568?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
   },
   {
-    comment: "Great school! I really love their tuition strategies",
+    comment: "BSLPS helped me sharpen my fluency in English.",
     name: "Nana",
     bio: "CEO- Elbee Transcription",
     src: "https://images.unsplash.com/photo-1596510914965-9ae08acae566?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=749&q=80",

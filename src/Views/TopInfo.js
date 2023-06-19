@@ -26,7 +26,7 @@ const TopInfo = () => {
               <Grid item xs={4}>
                 <Box
                   display="flex"
-                  justifyContent="right"
+                  justifyContent={{ xs: "center", md: "right" }}
                   alignItems="center"
                   columnGap={0.5}
                 >
@@ -44,7 +44,7 @@ const TopInfo = () => {
               <Grid item xs={4}>
                 <Box
                   display="flex"
-                  justifyContent="right"
+                  justifyContent={{ xs: "center", md: "right" }}
                   alignItems="center"
                   columnGap={0.5}
                 >
@@ -62,7 +62,7 @@ const TopInfo = () => {
               <Grid item xs={4}>
                 <Box
                   display="flex"
-                  justifyContent="right"
+                  justifyContent={{ xs: "center", md: "right" }}
                   alignItems="center"
                   columnGap={0.5}
                 >
