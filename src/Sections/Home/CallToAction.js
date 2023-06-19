@@ -38,6 +38,7 @@ const CallToAction = () => {
     const settings = {
       // dots: true,
       infinite: true,
+      pauseOnHover: true,
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,

@@ -6,11 +6,11 @@ import {
   Grid,
   Icon,
   IconButton,
-  Link,
   Typography,
 } from "@mui/material";
 import ActionButton from "../../components/Buttons/ActionButton";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import Link from "../../components/Links/Link";
 const AboutUs = () => {
   return (
     <div>
@@ -53,23 +53,18 @@ const AboutUs = () => {
                     my: 2,
                     cursor: "pointer",
                   }}
-                  columnGap={1}
                 >
                   <Link
-                    component="button"
-                    variant="body2"
-                    onClick={() => {
-                      console.info("I'm a button.");
-                    }}
+                    to="/about"
+                    textDecoration="underline"
                     fontWeight={600}
                     color="primary.light"
-                    alignItems="center"
+                    text="Learn More"
                   >
-                    Learn More
+                    <Icon fontSize="small" sx={{ color: "primary.light" }}>
+                      east
+                    </Icon>
                   </Link>
-                  <Icon fontSize="small" sx={{ color: "primary.light" }}>
-                    arrow_circle_right
-                  </Icon>
                 </Box>
               </Box>
             </Box>

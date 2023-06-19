@@ -1,15 +1,22 @@
-import { Box, Container, Grid, Icon, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Icon,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import React from "react";
+import schoolInfo from "../schoolInfo";
 
 const infoBox = {
   display: "flex",
   justifyContent: { xs: "center", md: "right" },
   alignItems: "center",
   columnGap: 0.5,
-  cursor: "pointer",
 };
 
-const TopInfo = () => {
+const TopInfo = (props) => {
   return (
     <div>
       <Box
@@ -31,44 +38,62 @@ const TopInfo = () => {
             <Grid container spacing={1} color="#fff" alignItems="center" py={1}>
               <Grid item xs={4}>
                 <Box sx={infoBox}>
-                  <Icon sx={{ fontSize: "1rem" }}>location_on</Icon>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: "0.7rem", md: "0.8rem" },
-                      fontWeight: 500,
-                    }}
+                  <IconButton
+                    size="small"
+                    sx={{ p: 0, color: "#fff", columnGap: 0.5 }}
+                    onClick={() => props.setOpenGoogleMap(true)}
                   >
-                    Mallam Accra
-                  </Typography>
+                    <Icon sx={{ fontSize: "1rem" }}>location_on</Icon>
+                    <Typography
+                      sx={{
+                        fontSize: { xs: "0.7rem", md: "0.8rem" },
+                        fontWeight: 500,
+                      }}
+                    >
+                      {schoolInfo.address.shortDescription}
+                    </Typography>
+                  </IconButton>
                 </Box>
               </Grid>
               <Grid item xs={4}>
                 <Box
                   sx={infoBox}
-                  onClick={() => (document.location.href = `tel:+233302214723`)}
+                  onClick={() =>
+                    (document.location.href = `tel:${schoolInfo.contact.phoneNumber}`)
+                  }
                 >
-                  <Icon sx={{ fontSize: "1rem" }}>phone</Icon>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: "0.7rem", md: "0.8rem" },
-                      fontWeight: 500,
-                    }}
+                  <IconButton
+                    size="small"
+                    sx={{ p: 0, color: "#fff", columnGap: 0.5 }}
                   >
-                    (0)302-214723
-                  </Typography>
+                    <Icon sx={{ fontSize: "1rem" }}>phone</Icon>
+                    <Typography
+                      sx={{
+                        fontSize: { xs: "0.7rem", md: "0.8rem" },
+                        fontWeight: 500,
+                      }}
+                    >
+                      {schoolInfo.contact.formattedPhoneNumber}
+                    </Typography>
+                  </IconButton>
                 </Box>
               </Grid>
               <Grid item xs={4}>
                 <Box sx={infoBox}>
-                  <Icon sx={{ fontSize: "1rem" }}>mail_outlined</Icon>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: "0.7rem", md: "0.8rem" },
-                      fontWeight: 500,
-                    }}
+                  <IconButton
+                    size="small"
+                    sx={{ p: 0, color: "#fff", columnGap: 0.5 }}
                   >
-                    info@bslps.com
-                  </Typography>
+                    <Icon sx={{ fontSize: "1rem" }}>mail_outlined</Icon>
+                    <Typography
+                      sx={{
+                        fontSize: { xs: "0.7rem", md: "0.8rem" },
+                        fontWeight: 500,
+                      }}
+                    >
+                      {schoolInfo.contact.email}
+                    </Typography>
+                  </IconButton>
                 </Box>
               </Grid>
             </Grid>

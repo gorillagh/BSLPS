@@ -16,87 +16,33 @@ import Footer from "./components/Footers/Footer";
 import { Box, Container, Grid, Icon, Typography } from "@mui/material";
 import TopInfo from "./Views/TopInfo";
 import ShowNavbar from "./components/Navbars/ShowNavbar";
+import schoolInfo from "./schoolInfo";
+import GoogleMap from "./popups/GoogleMap";
 
-let theme = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      light: "#0000d4",
-
-      dark: "#000088",
-      main: "#000099",
-      contrastText: "#fff",
-    },
-    secondary: {
-      light: "#d4d400",
-      main: "#aaaa00",
-      dark: "#888800",
-      contrastText: "#000",
-    },
-    error: {
-      main: "#ce0018",
-      light: "#ff0220",
-      dark: "#a50013",
-      contrastText: "#fff",
-    },
-    info: {
-      main: "#726f55",
-      light: "#8f8b6a",
-      dark: "#5b5944",
-      contrastText: "#fff",
-    },
-    highlight: "#fee5b9",
-
-    divider: "rgba(0, 0, 0, 0.08)",
-  },
-
-  shape: {
-    borderRadius: 14,
-  },
-  typography: {
-    fontFamily: [
-      // "Ubuntu",
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-    h5: {
-      fontFamily: "Ubuntu",
-    },
-    h4: {
-      fontFamily: "Ubuntu",
-    },
-    // body1: { fontSize: "0.9rem" },
-    body2: {
-      fontSize: "0.8rem",
-      color: "text.secondary",
-      fontWeight: "300",
-    },
-  },
-});
+let theme = createTheme({ ...schoolInfo.theme });
 theme = responsiveFontSizes(theme);
 
 const App = () => {
+  const [openGoogleMap, setOpenGoogleMap] = useState(false);
+
   return (
     <ThemeProvider theme={theme}>
       <Helmet>
         <title>BSLPS - Best School of Languages and Professional Studies</title>
       </Helmet>
       <ShowNavbar />
-      <TopInfo />
+      <TopInfo setOpenGoogleMap={setOpenGoogleMap} />
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/"
+          element={<Home openGoogleMap={openGoogleMap} />}
+        />
         <Route exact path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      <GoogleMap open={openGoogleMap} onClose={() => setOpenGoogleMap(false)} />
     </ThemeProvider>
   );
 };

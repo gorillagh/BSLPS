@@ -233,6 +233,10 @@ const Footer = (props) => {
             fontWeight={500}
             my={2}
             align="center"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            columnGap={1}
           >
             Copyright
             {" © "}

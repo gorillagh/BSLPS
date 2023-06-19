@@ -7,10 +7,10 @@ import {
   CardMedia,
   Grid,
   Icon,
-  Link,
   Typography,
 } from "@mui/material";
 import ActionButton from "../../components/Buttons/ActionButton";
+import Link from "../../components/Links/Link";
 
 const content = [
   {
@@ -18,7 +18,7 @@ const content = [
       "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     subtitle: "Language Programs",
     text: "Master English and French with our immersive language programs.",
-    link: "",
+    to: "/languages",
     icon: "translate",
   },
   {
@@ -26,7 +26,7 @@ const content = [
       "https://images.unsplash.com/photo-1457551859869-d4b7ab27184c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     subtitle: "Professional Skills",
     text: "Develop in-demand skills in graphic design, web development, makeup, and more.",
-    link: "",
+    to: "/skills",
     icon: "engineering",
   },
   {
@@ -34,7 +34,7 @@ const content = [
       "https://images.unsplash.com/photo-1623625434462-e5e42318ae49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
     subtitle: "Accommodation",
     text: "Have a look at all the accommodation options on offer when selecting a course in our school.",
-    link: "",
+    to: "/accommodation",
     icon: "apartment",
   },
 ];
@@ -98,30 +98,26 @@ const Services = () => {
                   >
                     {content.text}
                   </Typography>
+
                   <Box
                     sx={{
                       display: "flex",
                       justifyContent: { xs: "flex-end", md: "flex-start" },
-                      my: 1,
+                      my: 2,
                       cursor: "pointer",
                     }}
-                    columnGap={1}
                   >
                     <Link
-                      component="button"
-                      variant="body2"
-                      onClick={() => {
-                        console.info("I'm a button.");
-                      }}
+                      to={content.to}
+                      textDecoration="underline"
                       fontWeight={600}
                       color="primary.light"
-                      alignItems="center"
+                      text="Learn More"
                     >
-                      Learn More
+                      <Icon fontSize="small" sx={{ color: "primary.light" }}>
+                        east
+                      </Icon>
                     </Link>
-                    <Icon fontSize="small" sx={{ color: "primary.light" }}>
-                      arrow_circle_right
-                    </Icon>
                   </Box>
                 </Box>
               </Grid>
