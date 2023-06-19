@@ -11,13 +11,12 @@ const schoolInfo = {
 
   branch: "dansoman",
   address: {
-    description: "Dansoman High Street, Accra, near Tanko's Kitchen",
+    description: "Mallam, behind Ecobank",
     shortDescription: "Mallam, Accra",
     googleAddress: {
-      lng: -0.2706717944753955,
-      lat: 5.569252300035966,
-      description:
-        "Near Tanko’s Kitchen Dansoman, Dansoman High Street, Accra, Ghana",
+      lng: -0.28730676173235387,
+      lat: 5.569349778487747,
+      description: "Mallam, behind Ecobank",
       matched_substrings: [
         {
           length: 5,

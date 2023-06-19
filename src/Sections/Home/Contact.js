@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import ActionButton from "../../components/Buttons/ActionButton";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import schoolInfo from "../../schoolInfo";
 
 var render = function (status) {
   if (status === Status.LOADING)
@@ -36,8 +37,8 @@ const Contact = () => {
     useEffect(() => {
       const map = new window.google.maps.Map(ref.current, {
         center: {
-          lat: 5.569349778487747,
-          lng: -0.28730676173235387,
+          lat: schoolInfo.address.googleAddress.lat,
+          lng: schoolInfo.address.googleAddress.lng,
         },
         zoom: 17,
         // disableDefaultUI: true,
