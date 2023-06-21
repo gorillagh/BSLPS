@@ -45,7 +45,7 @@ const images = [
   },
 ];
 
-const Facilities = () => {
+const Facilities = (props) => {
   const Carousel = ({ children }) => {
     const settings = {
       dots: true,
@@ -135,6 +135,15 @@ const Facilities = () => {
                     variant="outlined"
                     my={0}
                     fullWidth={false}
+                    onClick={() => {
+                      props.setLoading(true);
+                      setTimeout(() => {
+                        props.setLoading(false);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+
+                        props.navigate("/resources");
+                      }, 1000);
+                    }}
                   />
                 </Box>
               </Box>

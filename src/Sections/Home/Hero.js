@@ -3,7 +3,7 @@ import { Avatar, Box, Grid, Icon, Typography } from "@mui/material";
 import ActionButton from "../../components/Buttons/ActionButton";
 // import hero from "../../images/hero.png";
 
-const Hero = () => {
+const Hero = (props) => {
   return (
     <div>
       <Box
@@ -39,6 +39,15 @@ const Hero = () => {
           variant="outlined"
           fullWidth={false}
           color="inherit"
+          onClick={() => {
+            props.setLoading(true);
+            setTimeout(() => {
+              props.setLoading(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+
+              props.navigate("/about");
+            }, 1000);
+          }}
         />
       </Box>
     </div>

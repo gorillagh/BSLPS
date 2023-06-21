@@ -18,7 +18,7 @@ import Facilities from "../Sections/Home/Facilities";
 import CallToAction from "../Sections/Home/CallToAction";
 import Contact from "../Sections/Home/Contact";
 
-const Home = () => {
+const Home = (props) => {
   const navigate = useNavigate();
 
   return (
@@ -52,32 +52,32 @@ const Home = () => {
         }}
       >
         <Container sx={{ position: "relative", zIndex: 1 }}>
-          <Hero />
+          <Hero navigate={navigate} setLoading={props.setLoading} />
         </Container>
       </Box>
       <Box id="about-us" bgcolor="">
         <Container>
-          <AboutUs />
+          <AboutUs navigate={navigate} setLoading={props.setLoading} />
         </Container>
       </Box>
       <Box id="services-section" bgcolor="#f8f8ff" py={5}>
         <Container>
-          <Services />
+          <Services navigate={navigate} setLoading={props.setLoading} />
         </Container>
       </Box>
       <Box id="facilities-section" py={5}>
         <Container>
-          <Facilities />
+          <Facilities navigate={navigate} setLoading={props.setLoading} />
         </Container>
       </Box>
       <Box id="call-to-action-section" bgcolor="#f8f8ff" py={5}>
         <Container>
-          <CallToAction />
+          <CallToAction navigate={navigate} setLoading={props.setLoading} />
         </Container>
       </Box>
       <Box id="contact-section" py={5}>
         <Container>
-          <Contact />
+          <Contact navigate={navigate} setLoading={props.setLoading} />
         </Container>
       </Box>
     </div>

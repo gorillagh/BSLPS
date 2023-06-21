@@ -49,7 +49,11 @@ const App = () => {
           path="/"
           element={
             <Suspense fallback={LoadingBackdrop}>
-              <Home openGoogleMap={openGoogleMap} />
+              <Home
+                openGoogleMap={openGoogleMap}
+                loading={loading}
+                setLoading={setLoading}
+              />
             </Suspense>
           }
         />
@@ -130,6 +134,7 @@ const App = () => {
         <Footer />
       </Suspense>
       <GoogleMap open={openGoogleMap} onClose={() => setOpenGoogleMap(false)} />
+      <LoadingBackdrop open={loading} />
     </ThemeProvider>
   );
 };

@@ -34,12 +34,12 @@ const content = [
       "https://images.unsplash.com/photo-1623625434462-e5e42318ae49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
     subtitle: "Accommodation",
     text: "Have a look at all the accommodation options on offer when selecting a course in our school.",
-    to: "/accommodation",
+    to: "/facilities/accommodation",
     icon: "apartment",
   },
 ];
 
-const Services = () => {
+const Services = (props) => {
   return (
     <div>
       <Box>
@@ -71,6 +71,13 @@ const Services = () => {
                   flexDirection="column"
                   rowGap={1}
                   sx={{ cursor: "pointer" }}
+                  onClick={() => {
+                    props.setLoading(true);
+                    setTimeout(() => {
+                      props.setLoading(false);
+                      props.navigate(content.to);
+                    }, 1000);
+                  }}
                 >
                   <Box width="100%">
                     <img
@@ -108,7 +115,7 @@ const Services = () => {
                     }}
                   >
                     <Link
-                      to={content.to}
+                      // to={content.to}
                       textDecoration="underline"
                       fontWeight={600}
                       color="primary.light"
@@ -145,6 +152,14 @@ const Services = () => {
                   "&:hover": {
                     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.5)",
                   },
+                }}
+                onClick={() => {
+                  props.setLoading(true);
+                  setTimeout(() => {
+                    props.setLoading(false);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    props.navigate(content.to);
+                  }, 1000);
                 }}
               >
                 <Grid container spacing={1} alignItems="center">
