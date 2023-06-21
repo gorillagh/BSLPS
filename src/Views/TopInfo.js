@@ -83,6 +83,14 @@ const TopInfo = (props) => {
                   <IconButton
                     size="small"
                     sx={{ p: 0, color: "#fff", columnGap: 0.5 }}
+                    onClick={() => {
+                      const emailSubject = "Regarding your message";
+                      const mailtoUrl = `mailto:${
+                        schoolInfo.contact.email
+                      }?subject=${encodeURIComponent(emailSubject)}&body=`;
+
+                      window.location.href = mailtoUrl;
+                    }}
                   >
                     <Icon sx={{ fontSize: "1rem" }}>mail_outlined</Icon>
                     <Typography

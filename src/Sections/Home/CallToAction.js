@@ -42,7 +42,7 @@ const CallToAction = () => {
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
-      speed: 5000,
+      speed: 1000,
       autoplaySpeed: 5000,
       cssEase: "linear",
       arrows: false,
