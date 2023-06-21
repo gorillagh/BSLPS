@@ -21,10 +21,10 @@ const LoadingBackdrop = (props) => {
         open={props.open}
         // onClick={handleClose}
       >
-        <Box sx={{ width: "20%" }}>
+        {/* <Box sx={{ width: "20%" }}>
           <LinearProgress color="inherit" />
-        </Box>
-        {/* <CircularProgress color="inherit" /> */}
+        </Box> */}
+        <CircularProgress color="inherit" />
       </Backdrop>
     </div>
   );

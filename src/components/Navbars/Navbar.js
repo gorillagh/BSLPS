@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -29,6 +29,7 @@ import Twitter from "@mui/icons-material/Twitter";
 import Facebook from "@mui/icons-material/Facebook";
 import Instagram from "@mui/icons-material/Instagram";
 import WhatsApp from "@mui/icons-material/WhatsApp";
+import LoadingBackdrop from "../Feedbacks/LoadingBackdrop";
 
 const pages = [
   { text: "Languages", icon: "translate", to: "/languages" },
@@ -37,7 +38,7 @@ const pages = [
   { text: "Faculty & Staff", icon: "", to: "/faculty" },
   { text: "Resources", icon: "", to: "/resources" },
 
-  { text: "News & Events", icon: "event", to: "news-events" },
+  { text: "News & Events", icon: "event", to: "/news-events" },
   { text: "About Us", icon: "info", to: "/about" },
   // { text: "Contact Us", icon: "call", to: "contact" },
 ];
@@ -47,6 +48,9 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -55,8 +59,14 @@ function Navbar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (to) => {
     setAnchorElNav(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigate(to);
+    }, 1000);
   };
 
   const handleCloseUserMenu = () => {
@@ -161,7 +171,13 @@ function Navbar() {
                 textDecoration: "none",
               }}
             >
-              <Link text="BSLPS" to="/" color="#000" />
+              <Link
+                text="BSLPS"
+                variant="h4"
+                fontWeight="bold"
+                to="/"
+                color="#000"
+              />
             </Typography>
             {/* <Typography variant="body2">
               Best School of Languages and Professional Studies
@@ -172,23 +188,38 @@ function Navbar() {
 
       <List sx={{ height: "100%" }}>
         <Box sx={{ display: { xs: "block", md: "none" } }}>
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ mb: 2 }} />
           {pages.map((item, index) => (
             <ListItem key={index} disablePadding sx={{ my: 1 }}>
               <ListItemButton
-                // onClick={() => item.to()}
+                onClick={() => handleCloseNavMenu(item.to)}
                 key={index}
                 sx={{ textAlign: "left" }}
               >
                 <ListItemIcon>
-                  <Icon fontSize="small" sx={{ color: "primary.light" }}>
+                  <Icon
+                    fontSize="small"
+                    sx={{
+                      color: window.location.href.includes(item.to)
+                        ? "primary.light"
+                        : "",
+                    }}
+                  >
                     {item.icon}
                   </Icon>
                 </ListItemIcon>
                 <ListItemText
                   key={index}
                   primary={
-                    <Typography fontWeight={500} variant="body2">
+                    <Typography
+                      fontWeight={500}
+                      variant="body2"
+                      sx={{
+                        color: window.location.href.includes(item.to)
+                          ? "primary.light"
+                          : "",
+                      }}
+                    >
                       {item.text}
                     </Typography>
                   }
@@ -380,15 +411,29 @@ function Navbar() {
               justifyContent: "space-between",
             }}
           >
-            <IconButton color="primary">
+            <IconButton
+              color="inherit"
+              onClick={() => {
+                setLoading(true);
+                setTimeout(() => {
+                  setLoading(false);
+                  navigate("/");
+                }, 1000);
+              }}
+            >
               <Icon>home</Icon>
             </IconButton>
             {pages.map((page, index) => (
               <Box display="flex" alignItems="center">
                 <Button
                   key={index}
-                  onClick={handleCloseNavMenu}
+                  onClick={() => handleCloseNavMenu(page.to)}
                   sx={{ display: "block" }}
+                  color={
+                    window.location.href.includes(page.to)
+                      ? "primary"
+                      : "inherit"
+                  }
                 >
                   <Box display="flex" alignItems="center">
                     <Typography variant="body2" fontWeight={500}>
@@ -404,6 +449,7 @@ function Navbar() {
             ))}
           </Box>
         </Toolbar>
+        <LoadingBackdrop open={loading} />
       </Container>
     </AppBar>
   );

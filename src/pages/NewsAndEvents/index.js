@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 
-const Resources = (props) => {
+const NewsAndEvents = (props) => {
   return (
     <div>
       <Box>
@@ -13,7 +13,7 @@ const Resources = (props) => {
             }}
             variant="h4"
           >
-            Our Resources
+            News and Events
           </Typography>
         </Container>
       </Box>
@@ -21,4 +21,4 @@ const Resources = (props) => {
   );
 };
 
-export default Resources;
+export default NewsAndEvents;
