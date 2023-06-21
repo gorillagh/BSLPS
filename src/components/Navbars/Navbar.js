@@ -412,7 +412,13 @@ function Navbar() {
             }}
           >
             <IconButton
-              color="inherit"
+              color={
+                window.location.href === "http://localhost:3000/" ||
+                window.location.href === "http://www.bslps.com/" ||
+                window.location.href === "https://bslps.vercel.app/"
+                  ? "primary"
+                  : "inherit"
+              }
               onClick={() => {
                 setLoading(true);
                 setTimeout(() => {

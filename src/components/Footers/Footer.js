@@ -108,7 +108,7 @@ const Footer = (props) => {
   };
   return (
     <>
-      <Divider sx={{ mt: 3 }} />
+      {/* <Divider sx={{ mt: 3 }} /> */}
 
       {/* </Container> */}
       <Box sx={{ bgcolor: "#000", color: "#fff" }} py={4}>
