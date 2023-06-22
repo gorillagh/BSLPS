@@ -12,5 +12,9 @@ body {
   /* background-color: #e7eff9; */
   background-color: #FFFFFF;
 }
+.youtube-player {
+  border-radius: 10px;
+  overflow: hidden;
+}
 
 

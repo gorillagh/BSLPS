@@ -9,9 +9,35 @@ import {
   Typography,
 } from "@mui/material";
 import ActionButton from "../../components/Buttons/ActionButton";
+import YouTube from "react-youtube";
+
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Link from "../../components/Links/Link";
 const AboutUs = () => {
+  const YouTubePlayer = ({ videoId }) => {
+    const opts = {
+      height: "280",
+      width: "100%",
+      playerVars: {
+        color: "white",
+        autoplay: 0,
+        controls: 0,
+        modestbranding: 1, // Hide the YouTube channel information
+        rel: 0,
+        showinfo: 0, // Hide the video title and uploader information
+        fs: 1,
+      },
+    };
+
+    return (
+      <Box p={2}>
+        <div className="youtube-player">
+          <YouTube videoId={videoId} opts={opts} />
+        </div>
+      </Box>
+    );
+  };
+
   return (
     <div>
       <Box>
@@ -89,35 +115,22 @@ const AboutUs = () => {
                 boxSizing: "border-box",
                 display: "flex",
                 alignItems: "center",
-                height: { xs: 200, md: 300 },
-                width: { xs: 300, md: "100%" },
+                // height: { xs: 200, md: 300 },
+                // width: { xs: 300, md: "100%" },
                 mx: "auto",
                 position: "relative",
-                backgroundColor: "transparent", // Adjust the opacity (0.5) to make it darker
+                backgroundColor: "#fff", // Adjust the opacity (0.5) to make it darker
                 color: "#fff",
                 mb: 0,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundImage: `url(https://images.unsplash.com/photo-1632454005805-7bee57f76ee8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80)`,
-                "::before": {
-                  content: '""',
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0,
-                  backgroundColor: "rgba(0, 0, 0, 0.2)", // Adjust the opacity (0.5) to make it darker
-                  zIndex: 1,
-                },
               }}
             >
               <Box sx={{ position: "relative", zIndex: 1, width: "100%" }}>
-                <Box display="flex" alignItems="center" justifyContent="center">
+                {/* <Box display="flex" alignItems="center" justifyContent="center">
                   <IconButton sx={{ color: "#fff" }} size="large">
                     <YouTubeIcon sx={{ fontSize: "4rem" }} />
                   </IconButton>
-                </Box>
+                </Box> */}
+                <YouTubePlayer videoId="iILGiJKLQfg" />
               </Box>
             </Box>
           </Grid>
