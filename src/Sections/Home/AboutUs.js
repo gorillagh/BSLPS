@@ -107,6 +107,7 @@ const AboutUs = () => {
                     fontFamily: "'Ubuntu', sans-serif",
                   }}
                   variant="body2"
+                  fontWeight={500}
                 >
                   We strive to provide the best when it comes to languages and
                   professional skills.
