@@ -17,6 +17,8 @@ body {
   overflow: hidden;
 }
 
-
+#youtube-player .ytp-title {
+  display: none !important;
+}
 
 

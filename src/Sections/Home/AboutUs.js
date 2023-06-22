@@ -25,6 +25,7 @@ const AboutUs = () => {
         controls: 1,
         modestbranding: 1, // Hide the YouTube channel information
         rel: 0,
+        showinfo: 0,
       },
     };
     const onReady = (event) => {
@@ -53,7 +54,7 @@ const AboutUs = () => {
     }, []);
 
     return (
-      <div className="youtube-player">
+      <div className="youtube-player" id="youtube-player">
         {isLoading ? (
           <Box
             display="flex"
