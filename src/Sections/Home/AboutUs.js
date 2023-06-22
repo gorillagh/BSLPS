@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Box,
+  CircularProgress,
   Container,
   Grid,
   Icon,
@@ -15,26 +16,63 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import Link from "../../components/Links/Link";
 const AboutUs = () => {
   const YouTubePlayer = ({ videoId }) => {
+    const [isLoading, setIsLoading] = useState(true);
     const opts = {
       height: "280",
       width: "100%",
       playerVars: {
-        color: "white",
         autoplay: 0,
-        controls: 0,
+        controls: 1,
         modestbranding: 1, // Hide the YouTube channel information
         rel: 0,
-        showinfo: 0, // Hide the video title and uploader information
-        fs: 1,
       },
     };
+    const onReady = (event) => {
+      setIsLoading(false);
+      console.log("YouTube player is ready:", event.target);
+    };
+
+    const onStateChange = (event) => {
+      console.log(
+        "YouTube player state changed:",
+        event.target.getPlayerState()
+      );
+    };
+
+    const onError = (event) => {
+      setIsLoading(false);
+      console.log("YouTube player encountered an error:", event.data);
+    };
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false); // Set loading state to false after a certain delay (e.g., 2 seconds)
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }, []);
 
     return (
-      <Box p={2}>
-        <div className="youtube-player">
-          <YouTube videoId={videoId} opts={opts} />
-        </div>
-      </Box>
+      <div className="youtube-player">
+        {isLoading ? (
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            py={5}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <YouTube
+            videoId={videoId}
+            opts={opts}
+            onReady={onReady}
+            onStateChange={onStateChange}
+            onError={onError}
+          />
+        )}
+      </div>
     );
   };
 
@@ -120,7 +158,7 @@ const AboutUs = () => {
                 mx: "auto",
                 position: "relative",
                 backgroundColor: "#fff", // Adjust the opacity (0.5) to make it darker
-                color: "#fff",
+                // color: "#fff",
                 mb: 0,
               }}
             >
