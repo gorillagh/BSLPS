@@ -35,10 +35,10 @@ const Hero = (props) => {
         </Typography>
 
         <ActionButton
-          text="Learn More"
-          variant="outlined"
+          text="Join Us"
+          // variant="outlined"
           fullWidth={false}
-          color="inherit"
+          // color="inherit"
           onClick={() => {
             props.setLoading(true);
             setTimeout(() => {
